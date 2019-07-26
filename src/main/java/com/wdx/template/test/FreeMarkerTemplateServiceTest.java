@@ -32,7 +32,7 @@ public class FreeMarkerTemplateServiceTest {
 	@Test
 	public void templateTest001(){
 		// 模板文件名字
-		String templateName = "cp1.ftl";
+		String templateName = "cp1.html";
 		// 设置参数内容
 		Dict dict = Dict.create();
 		dict.set("intValue", 15);
