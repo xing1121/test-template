@@ -9,7 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.wdx.template.domain.Person;
-import com.wdx.template.service.FreeMarkerTemplateService;
+import com.wdx.template.service.FreeMarkerTemplateUtils;
 import com.wdx.template.service.PersonService;
 
 import cn.hutool.core.lang.Dict;
@@ -53,7 +53,7 @@ public class FreeMarkerTemplateServiceTest {
 		String result = null;
 		try {
 			// 获取内容
-			result = FreeMarkerTemplateService.getStringFromTemplate(templateName, dict);
+			result = FreeMarkerTemplateUtils.getStringFromTemplate(templateName, dict);
 		} catch (Exception e) {
 			logger.error("get error->" + templateName, e);
 		}

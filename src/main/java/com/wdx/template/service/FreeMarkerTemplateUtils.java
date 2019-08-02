@@ -11,15 +11,21 @@ import cn.hutool.extra.template.engine.freemarker.FreemarkerEngine;
 
 /**
  * 描述：FreeMarkerTemplateService
+ * 		从classpath下的名为templates的文件夹下获取模板文件
  * @author 80002888
  * @date   2019年7月26日
  */
-public class FreeMarkerTemplateService {
+public class FreeMarkerTemplateUtils {
 	
-	private static Logger logger = LoggerFactory.getLogger(FreeMarkerTemplateService.class);
+	private static Logger logger = LoggerFactory.getLogger(FreeMarkerTemplateUtils.class);
 
 	/**
-	 * 根据类路径下templates文件夹内模板文件名称，获取内容
+	 * 模板文件夹
+	 */
+	private static String templateFolder = "templates";
+	
+	/**
+	 * 从classpath下的名为templates的文件夹下获取模板文件内容
 	 * 	如类路径下的templates/123.ftl，则传入123.ftl
 	 *	@ReturnType	String 
 	 *	@Date	2019年7月26日	下午2:24:42
@@ -50,7 +56,7 @@ public class FreeMarkerTemplateService {
 	 */
 	private static class FreemarkerEngineSingletonHolder {
 		// 创建配置，指定模板文件夹
-		private static TemplateConfig config = new TemplateConfig("templates", ResourceMode.CLASSPATH);
+		private static TemplateConfig config = new TemplateConfig(templateFolder, ResourceMode.CLASSPATH);
 		// 创建Freemarker模板引擎
 		private static FreemarkerEngine singleton = new FreemarkerEngine(config);
 	}
@@ -61,7 +67,7 @@ public class FreeMarkerTemplateService {
 	 *	@Date	2019年7月26日	下午2:21:51
 	 *  @Param  @return
 	 */
-	public static FreemarkerEngine getFreemarkerEngineInstance(){
+	private static FreemarkerEngine getFreemarkerEngineInstance(){
 		return FreemarkerEngineSingletonHolder.singleton;
 	}
 	
